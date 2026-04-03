@@ -1,0 +1,233 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Open Sans", sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      font-size: 12px;
+      text-align: justify;
+    }
+
+    .anime-box {
+      background: linear-gradient(90deg, #1a1f38, #2c2b5e);
+      color: white;
+      padding: 1em;
+    }
+
+    .anime-header {
+      display: flex;
+      height: auto;
+      gap: 0.5em;
+    }
+
+    .anime-cover {
+      position: relative;
+      width: 105px;
+      flex-shrink: 0;
+    }
+
+    .anime-cover img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 105 / 165;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .badge-anime {
+      position: absolute;
+      bottom: 3%;
+      left: 4%;
+      background: #03A9F4;
+      color: white;
+      font-size: 10.4px;
+      font-weight: bold;
+      padding: 0px 6.4px 0.8px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+.anime-info {
+  flex: 1;
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 165px;
+  overflow: hidden;
+}
+
+.anime-content-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.anime-content-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.anime-content-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.anime-info h1 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.estado {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.sinopsis {
+  font-size: 12px;
+  line-height: 1.5;
+  padding-right: 0px;
+}
+
+
+    .generos-box {
+      padding: 10px 0 1px;
+    }
+
+    .generos-box .label {
+      margin-left: 2px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .generos {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-left: 2px;
+}
+
+.generos a {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: white;
+  white-space: nowrap;
+  text-decoration: none; /* Quita el subrayado */
+  transition: background 0.2s ease;
+}
+
+.generos a:hover {
+  background: rgba(255, 255, 255, 0.1); /* Opcional para un efecto al pasar el mouse */
+}
+
+
+    .episodios {
+      background: white;
+    }
+
+    .episodios-header {
+      display: flex;
+      align-items: center;
+      padding: 12px 15px 2px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .episodios-header i {
+      margin-right: 8px;
+      color: #00B0FF; /* Celeste */
+      font-size: 1.2em;
+      position: relative;
+      top: 1px;
+    }
+
+
+    .info-tags {
+      display: flex;
+      gap: 10px;
+      padding: 10px 15px;
+      flex-wrap: wrap;
+    }
+    
+
+    .tag-link {
+      background: #eee;
+      color: #444;
+      padding: 6px 14px;
+      font-size: 11px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .tag-link:hover {
+      background: #ddd;
+    }
+
+    .tag-link:active {
+      transform: scale(0.96);
+      background: #ccc;
+    }
+
+    .episodios-box {
+      background: linear-gradient(to right, #1682d8, #921da6);
+      color: white;
+      padding: 11px 15px;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .episodios-box span:last-child {
+      transform: rotate(180deg);
+    }
+    .episodios-list {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+
+    .episodios-list .item {
+      display: block;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: #111;
+      background-color: #fff;
+      text-decoration: none;
+      box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.06), inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+    }
+ 
+
+    .episodios-list .item:hover {
+      background-color: #f9f9f9;
+      color: #007bff; /* Un azul notorio pero elegante */
+    } 
+
+
+    @media (max-width: 600px) {
+      .anime-header {
+        flex-direction: row;
+        height: auto;
+        min-height: 165px;
+      }
+
+      .anime-info {
+        height: 165px;
+        padding-left: 12px;
+      }
+
+      .anime-info h1 {
+        font-size: 15px;
+      }
+      }
+       body.no-scroll {
+        overflow: hidden;
+        touch-action: none;
+      }

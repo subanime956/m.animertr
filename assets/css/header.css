@@ -1,0 +1,283 @@
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('../fuentes/comic-neue/ComicNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('../fuentes/comic-neue/ComicNeue-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fuentes/open-sans/OpenSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fuentes/open-sans/OpenSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../fuentes/open-sans/OpenSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fuentes/rubik/Rubik-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fuentes/rubik/Rubik-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fuentes/rubik/Rubik-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+
+.header-wrapper {
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  flex-wrap: nowrap;
+  background: linear-gradient(to right, #1682d8, #921da6);
+  gap: 20px;
+}
+
+.header-logo {
+  flex-shrink: 0;
+}
+
+.header-logo img {
+  height: 35px;
+  display: block;
+  margin: 0 auto;
+}
+
+.header-nav {
+  display: flex;
+  gap: 24px;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0;
+  margin-left: 16px;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 6px 0;
+  transition: color 0.3s ease;
+  text-align: left;
+}
+
+.header-nav a:hover {
+  color: #775cdc;
+  text-shadow: 0 0 1px #775cdc, 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.search-icon {
+  align-self: flex-start;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 5px;
+  flex-shrink: 0;
+
+}
+
+.search-icon:hover {
+  color: #775cdc;
+}
+
+.header-social {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header-social a {
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.header-social a:hover {
+  color: #775cdc;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
+  flex-shrink: 0;
+  padding: 12px;
+}
+
+/* VERSIÓN MÓVIL AJUSTADA para activarse cuando no hay espacio */
+@media (max-width: 1000px) {
+  .header-container {
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0px 15px;
+    gap: 12px;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .header-logo {
+    
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .search-icon {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: -0.5px;
+  }
+
+  .header-nav,
+  .header-social {
+    display: none;
+  }
+
+  #mobileMenu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 250px;
+  height: 100%;
+  background-color: #00384d;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#mobileMenu.open {
+  left: 0;
+}
+
+/* Área desplazable */
+.mobile-menu-items {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.mobile-menu-items::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mobile-menu-items::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+
+/* Ítems del menú */
+.mobile-menu-items a {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-menu-items a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-items a i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Fijo abajo */
+#mobileIconsBottom {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+#mobileIconsBottom a i {
+  color: white;
+  font-size: 18px;
+}
+
+#mobileIconsBottom a:hover i {
+  color: #775cdc;
+}
+
+#menuOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+}
+
+#menuOverlay.active {
+  display: block;
+}
+}
+
+@media (min-width: 1001px) {
+  #mobileMenu,
+  #menuOverlay {
+    display: none !important;
+  }
+}

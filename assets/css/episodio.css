@@ -1,0 +1,335 @@
+body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff;
+    }
+
+    h1 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 15px 10px 10px;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #00aaff;
+      border-radius: 30px;
+      margin: 0 auto 15px;
+      max-width: 97%;
+      overflow: hidden;
+      height: 40px;
+    }
+
+    .nav-bar a {
+      color: #00aaff;
+      text-decoration: none;
+      padding: 12px 10px;
+      flex: 1;
+      text-align: center;
+      font-size: 14px;
+      height: 100%;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .nav-bar a:first-child {
+      max-width: 45px;
+      border-right: 1px solid #00aaff;
+      border-radius: 30px 0 0 30px;
+    }
+
+    .nav-bar a:last-child {
+      max-width: 45px;
+      border-left: 1px solid #00aaff;
+      border-radius: 0 30px 30px 0;
+    }
+
+    .nav-bar a:hover {
+      background: #00aaff;
+      color: white;
+    }
+
+    .nav-bar i {
+      font-size: 22px;
+    }
+
+    .servers {
+      display: flex;
+      background: linear-gradient(to right, #00214d, #660066);
+      overflow-x: auto;
+    }
+
+    .servers button {
+      flex: none;
+      padding: 12px 20px;
+      font-family: 'Open Sans', sans-serif;
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .servers button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .servers button.active {
+      background-color: #007fff;
+    }
+
+.TbVideoCn,
+.tab-pane,
+#video_box.Video {
+  width: 100%;
+  max-height: calc(100vh - 170px); /* Ajusta según header */
+  position: relative;
+  background: black;
+}
+
+/* El truco está aquí: el before define la altura proporcional */
+#video_box.Video::before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 65%; /* Define altura exacta */
+  
+}
+
+/* El iframe se posiciona dentro del contenedor, NO absolute */
+#video_box.Video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 0;
+  display: block;
+}
+
+
+
+    .footer {
+      background: linear-gradient(to right, #003366, #660066);
+      text-align: right;
+      z-index: 10;
+      padding: 12px;
+      padding-right: 6px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .descarga,
+.cronologia {
+  font-family: 'Open Sans', sans-serif !important;
+  all: unset; /* Elimina todos los estilos que puedan afectar la claridad */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 15px;
+  border: 1px solid white;
+  border-radius: 20px;
+  background-color: transparent;
+  color: white;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  gap: 6px;
+  z-index: 2;
+}
+
+
+    .descarga:hover,
+.cronologia:hover {
+      background: white;
+      color: #003366;
+    }
+
+    .footer span {
+      display: inline;
+    }
+
+    @media (max-width: 360px) {
+      .footer span {
+        display: none;
+      }
+    }
+
+.donate-banner {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  max-width: 94%;
+  margin: 30px auto;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.donate-info h2 {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 17px;
+  margin-bottom: 8px;
+  color: #333;
+  
+}
+
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  width: 315px;
+  padding: 20px;
+  background: white;
+  text-align: center;
+  border-radius: 10px;
+  animation: fadeIn 0.3s;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #333;
+  font-size: 20px;
+}
+
+.download-btn {
+  padding: 10px 20px;
+  background-color: #D32F2F;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 20px;
+  border: 2px solid black;
+}
+
+.download-btn:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
+}
+
+.download-btn-2 {
+  padding: 10px 20px;
+  background-color: Blue;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 5px !important;
+  display: inline-block;
+  margin-top: 10px;
+  border: 2px solid black !important;
+}
+
+.download-btn-2:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
+}
+
+.premium-download-btn {
+  padding: 10px 20px;
+  color: Black; 
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 10px;
+  border: 2px solid black; 
+  background-image: url('https://i.pinimg.com/originals/53/ed/14/53ed144ddb37ea6e47b0aec5da27fdd5.gif');
+  background-size: cover; 
+  background-position: center; 
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Comic Neue'; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-shadow: 
+    -1px -1px 0 white, 
+     1px -1px 0 white, 
+    -1px  1px 0 white, 
+     1px  1px 0 white,  
+    -2px -2px 2px white, 
+     2px -2px 2px white, 
+    -2px  2px 2px white, 
+     2px  2px 2px white; 
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.premium-download-btn:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  opacity: 0.9;
+}
+
+#copyText {
+  font-weight: bold;
+  font-style: italic;
+  color: white;
+  background-color: #696767;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.donate-text {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #555;
+  text-align: justify;
+  line-height: 1.6;
+  font-style: italic;
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+.donate-text p {
+  margin-bottom: 0;
+}
+
+.donate-text a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.donate-text a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+    
+       body.no-scroll {
+        overflow: hidden;
+        touch-action: none;
+      }

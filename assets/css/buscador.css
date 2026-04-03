@@ -1,0 +1,224 @@
+        body {
+            font-family: "Open Sans", sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .custom-title {
+            text-align: left;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .container {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 6px;
+          padding: 10px;
+        }
+
+
+        @media (max-width: 768px) {
+        .container {
+          grid-template-columns: repeat(3, 1fr); /* 3 columnas en móvil */
+          gap: 6px;
+          padding: 8px;
+         }
+        }
+
+
+        .card {
+          background: white;
+          border-radius: 6px;
+          overflow: hidden;
+          text-decoration: none;
+          color: #333;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+          transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+          transform: translateY(-4px);
+        }
+        .card-badge {
+          position: absolute;
+          top: 2%;
+          left: 3%;
+          background: #03a9f4;
+          color: white;
+          font-size: 10.4px;
+          font-weight: 700;
+          padding: 0px 6.4px 0.8px;
+          border-radius: 999px; /* píldora redonda */
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+        }
+
+
+        .card-content {
+          padding: 1px 8px 8px 8px; /* menos padding arriba */
+          font-size: 13px;
+          text-align: left;
+          font-weight: bold;
+        }
+
+        .card-content h3 {
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 10px; /* espacio entre input y botón */
+            width: 100%;
+            padding: 7px 10px;
+            background-color: #00B0FF;
+            position: relative;
+            box-sizing: border-box;
+            flex-wrap: nowrap;
+        }
+        .search-box {
+           position: relative;
+        }
+        
+
+        #searchInput {
+          width: 100%;
+          background-color: rgba(30, 30, 30, 0.4); /* fondo translúcido visible */
+          border: none;             /* sin borde */
+          outline: none;            /* sin contorno al enfocar */
+          padding: 9px;
+          border-radius: 4px;
+          font-size: 16px;
+          color: white;             /* texto blanco */
+          font-family: 'Rubik', sans-serif;
+        }
+
+
+        #searchInput::placeholder {
+          color: rgba(255, 255, 255, 0.7); /* o cualquier color */
+        }
+
+
+        .suggestions {
+            position: absolute;
+            top: 90%; /* Esto debería ponerlo justo debajo del input */
+            width: calc(100% - 135px);
+            background: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 4px;
+            max-height: 150px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc; /* Línea separadora */
+        }
+        .suggestion-item:last-child {
+            border-bottom: none; /* Quita la línea al último */
+        }
+        .suggestions::-webkit-scrollbar {
+           width: 6px;
+        }
+        .suggestions::-webkit-scrollbar-thumb {
+           background-color: #ccc;
+           border-radius: 4px;
+        }
+
+        .suggestion-item:hover {
+            background-color: #eee;
+        }
+        
+
+        /* Animación de agrandamiento */
+        .highlight {
+            animation: pulse 0.5s ease-in-out 2;
+            z-index: 10;
+            position: relative;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+    .Generos {
+      background-color: #ffffff;
+      color: #00B0FF;
+      font-weight: bold;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Rubik', sans-serif;
+      font-size: 13px;
+      transition: background-color 0.3s;
+      white-space: nowrap;
+      margin-top: 0.5px;
+    }
+
+    .Generos:hover {
+      background-color: #e0f7ff;
+    }
+
+    .contenido-acordeon {
+      display: none;
+      position: absolute;
+      top: 80%;
+      right: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 1px 0;
+      margin-top: 6px;
+      border-radius: 4px;
+      min-width: 180px;
+      z-index: 2;
+      max-height: 210px;
+      overflow-y: auto;
+    }
+
+    .contenido-acordeon a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: 'Rubik', sans-serif;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .contenido-acordeon a:last-child {
+      border-bottom: none;
+    }
+
+    .contenido-acordeon a:hover {
+      background-color: #f0f9ff;
+    }
+
+    /* Scroll fino */
+    .contenido-acordeon::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .contenido-acordeon::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      border-radius: 4px;
+    }
+    
+       body.no-scroll {
+        overflow: hidden;
+        touch-action: none;
+      }
