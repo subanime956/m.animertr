@@ -190,16 +190,18 @@
   </script>
 
   <script>
-    function setIframe(src, el) {
-  const iframe = document.getElementById('videoPlayer');
+  function setIframe(src, el) {
+  const oldIframe = document.getElementById('videoPlayer');
+  const newIframe = document.createElement('iframe');
+  newIframe.id = 'videoPlayer';
+  newIframe.src = src;
+  newIframe.allowFullscreen = true;
+  newIframe.style.width = '100%';
+  newIframe.style.border = 'none';
+  newIframe.style.backgroundColor = 'black';
+  oldIframe.replaceWith(newIframe);
 
-  // Cambia solo el video, no el iframe
-  iframe.src = src;
-
-  // Botón activo
-  document.querySelectorAll('.servers button')
-    .forEach(btn => btn.classList.remove('active'));
-
+  document.querySelectorAll('.servers button').forEach(btn => btn.classList.remove('active'));
   el.classList.add('active');
 }
   </script>
