@@ -84,10 +84,12 @@
 
 
       <!-- Icono búsqueda derecha -->
-      <a href="#" class="search-icon" onclick="buscar()">
+      <input type="text" id="busqueda" placeholder="Buscar..." 
+onkeypress="if(event.key==='Enter') buscar()" />
+
+<a href="#" class="search-icon" onclick="buscar()">
   <i class="fa fa-search"></i>
 </a>
-      <input type="text" id="busqueda" placeholder="Buscar..." />
     </div>
 
 
