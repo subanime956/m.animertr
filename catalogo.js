@@ -40,7 +40,7 @@ fetch('/data.json')
       
       <div style="position: relative;">
         ${item.badge ? `<span class="card-badge">${item.badge}</span>` : ""}
-        <img src="${item.imagen}" alt="${item.titulo}">
+        <img src="${item.imagen}" alt="${item.titulo}" style="width: 100%;">
       </div>
 
       <div class="card-content">
