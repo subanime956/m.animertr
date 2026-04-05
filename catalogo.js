@@ -35,16 +35,21 @@ fetch('/data.json')
   resultados.innerHTML = "";
 
   paginaItems.forEach(item => {
-    resultados.innerHTML += `
-      <div class="card">
-       <span class="card-badge">${anime.estado}</span>
-        <a href="${item.url}" style="color:white;text-decoration:none;">
-          <img src="${item.imagen}">
-          <p>${item.titulo}</p>
-        </a>
+  resultados.innerHTML += `
+    <a class="card" href="${item.url}">
+      
+      <div style="position: relative;">
+        ${item.badge ? `<span class="card-badge">${item.badge}</span>` : ""}
+        <img src="${item.imagen}" alt="${item.titulo}">
       </div>
-    `;
-  });
+
+      <div class="card-content">
+        <h3>${item.titulo}</h3>
+      </div>
+
+    </a>
+  `;
+});
 
   const totalPaginas = Math.ceil(filtrados.length / porPagina);
 
