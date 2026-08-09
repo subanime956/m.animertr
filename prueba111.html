@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mio Bot — Tienda Oficial y Membresías VIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0b10;
+            --card-bg: rgba(18, 20, 29, 0.85);
+            --accent-purple: #8c52ff;
+            --accent-cyan: #00f2fe;
+            --accent-pink: #ff2a85;
+            --accent-gold: #ffb703;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(140, 82, 255, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(140, 82, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(0, 242, 254, 0.12) 0%, transparent 40%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 50px 20px 30px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00f2fe 0%, #8c52ff 50%, #ff2a85 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+        }
+
+        /* GRID SYSTEM */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        /* CARDS GENERAL */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: var(--accent-purple);
+            box-shadow: 0 12px 30px rgba(140, 82, 255, 0.25);
+        }
+
+        /* MEMBRESÍAS IMÁGENES Y BADGES */
+        .card-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+        }
+
+        .card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-image-wrapper img {
+            transform: scale(1.06);
+        }
+
+        .badge-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(10, 11, 16, 0.85);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            text-transform: uppercase;
+        }
+
+        .badge-tag.gold {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: rgba(255, 183, 3, 0.15);
+        }
+
+        .badge-tag.pink {
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+            background: rgba(255, 42, 133, 0.15);
+        }
+
+        /* CARD CONTENT */
+        .card-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .card-price span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .sc-highlight {
+            background: rgba(0, 242, 254, 0.08);
+            border-left: 3px solid var(--accent-cyan);
+            padding: 10px 12px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            color: #e2e8f0;
+        }
+
+        .sc-highlight strong {
+            color: var(--accent-cyan);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .feature-list li {
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--accent-purple);
+            font-weight: bold;
+        }
+
+        /* PACKS ÚNICOS ESPECÍFICOS */
+        .pack-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* BOTONES */
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-purple) 0%, #6c5ce7 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(140, 82, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.95;
+            box-shadow: 0 6px 20px rgba(140, 82, 255, 0.6);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #d48806 100%);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);
+        }
+
+        .btn-gold:hover {
+            opacity: 0.95;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 242, 254, 0.1);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.1rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ENCABEZADO -->
+        <header>
+            <h1>TIENDA OFICIAL DE MIO BOT</h1>
+            <p>Asegura tu supervivencia, impulsa tu economía y adquiere ventajas exclusivas para dominar tus grupos de WhatsApp.</p>
+        </header>
+
+        <!-- SECCIÓN 1: MEMBRESÍAS MENSUALES -->
+        <h2 class="section-title">👑 Membresías VIP Mensuales</h2>
+        <div class="grid">
+
+            <!-- DIVINO -->
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80" alt="Membresía Divino">
+                    <span class="badge-tag">Suscripción</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        Divino 🪽
+                    </div>
+                    <div class="card-price">$3.00 <span>/ mes</span></div>
+                    
+                    <div class="sc-highlight">
+                        💎 <strong>135,000 SC Totales:</strong><br>
+                        • 30,000 SC iniciales<br>
+                        • +3,500 SC al día en <code>/daily</code>
+                    </div>
+
+                    <ul class="feature-list">
+                        <li><strong>Suministros:</strong> 1x Elixir Curativo, 3x Pastel, 3x Agua Pura</li>
+                        <li><strong>Beneficio:</strong> -2 min de cooldown en <code>/trabajar</code></li>
+                        <li>Insignia exclusiva <code>[Divino 🪽]</code> en tu perfil</li>
+                    </ul>
+
+                    <button class="btn btn-primary" onclick="buy('Membresía Divino', '$3.00')">Adquirir Membresía</button>
+                </div>
+            </div>
+
+            <!-- GRAN GUARDIÁN (RECOMENDADO) -->
+            <div class="card" style="border-color: var(--accent-purple);">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80" alt="Membresía Gran Guardián">
+                    <span class="badge-tag gold">★ Más Popular</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        Gran Guardián 🛡️
+                    </div>
+                    <div class="card-price">$5.00 <span>/ mes</span></div>
+                    
+                    <div class="sc-highlight" style="border-color: var(--accent-gold);">
+                        💎 <strong>270,000 SC Totales:</strong><br>
+                        • 60,000 SC iniciales<br>
+                        • +7,000 SC al día en <code>/daily</code>
+                    </div>
+
+                    <ul class="feature-list">
+                        <li><strong>Suministros:</strong> 2x Elixir Curativo, 5x Pastel, 5x Agua Pura</li>
+                        <li><strong>Beneficio:</strong> -3 min en <code>/trabajar</code> y <code>/crime</code></li>
+                        <li><strong>Protección de Muerte:</strong> Conservas el 50% de tus monedas tras un Wipe</li>
+                        <li>Insignia exclusiva <code>[Guardián 🛡️]</code></li>
+                    </ul>
+
+                    <button class="btn btn-gold" onclick="buy('Membresía Gran Guardián', '$5.00')">Adquirir Membresía</button>
+                </div>
+            </div>
+
+            <!-- DIOS PRIMORDIAL -->
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Membresía Dios Primordial">
+                    <span class="badge-tag pink">Últimos 2 Cupos</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        Dios Primordial ⚡
+                    </div>
+                    <div class="card-price">$15.00 <span>/ mes</span></div>
+                    
+                    <div class="sc-highlight" style="border-color: var(--accent-pink);">
+                        💎 <strong>800,000 SC Totales:</strong><br>
+                        • 200,000 SC iniciales<br>
+                        • +20,000 SC al día en <code>/daily</code>
+                    </div>
+
+                    <ul class="feature-list">
+                        <li><strong>Suministros:</strong> 5x Elixir Curativo, 10x Pastel, 10x Agua Pura</li>
+                        <li><strong>Beneficio:</strong> -5 min en TODOS los cooldowns del bot</li>
+                        <li><strong>Seguro Anti-Wipe 100%:</strong> Inmunidad total; no pierdes tu harem ni inventario al morir</li>
+                        <li>Insignia exclusiva <code>[Primordial ⚡]</code></li>
+                    </ul>
+
+                    <button class="btn btn-primary" onclick="buy('Membresía Dios Primordial', '$15.00')">Adquirir Membresía</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECCIÓN 2: PACKS ÚNICOS -->
+        <h2 class="section-title">📦 Packs Únicos de Emergencia</h2>
+        <div class="grid">
+
+            <!-- BOTIQUÍN -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="pack-icon">🚨</div>
+                    <div class="card-title">Botiquín de Emergencia</div>
+                    <div class="card-price">$0.99 <span>/ pago único</span></div>
+                    
+                    <div class="sc-highlight">
+                        💰 <strong>15,000 SC</strong> en efectivo directo
+                    </div>
+
+                    <ul class="feature-list">
+                        <li>1x 🪬 Elixir Curativo (Valorado en 22k)</li>
+                        <li>2x 🧴 Agua Pura (Valorado en 5k)</li>
+                        <li><strong>Uso:</strong> Cura el Virus Mortal al instante y te deja saldo libre para comer o tirar rolls.</li>
+                    </ul>
+
+                    <button class="btn btn-outline" onclick="buy('Botiquín de Emergencia', '$0.99')">Comprar Pack</button>
+                </div>
+            </div>
+
+            <!-- BOLSA DE SUPERVIVENCIA -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="pack-icon">🎒</div>
+                    <div class="card-title">Bolsa de Supervivencia</div>
+                    <div class="card-price">$2.99 <span>/ pago único</span></div>
+                    
+                    <div class="sc-highlight">
+                        💰 <strong>50,000 SC</strong> en efectivo directo
+                    </div>
+
+                    <ul class="feature-list">
+                        <li>1x 🪬 Elixir Curativo</li>
+                        <li>3x 🍰 Pastel (35 FP c/u)</li>
+                        <li>3x 🧴 Agua Pura (30 WP c/u)</li>
+                        <li><strong>Uso:</strong> Recarga económica rápida para gastos libres + kit de salud completo.</li>
+                    </ul>
+
+                    <button class="btn btn-outline" onclick="buy('Bolsa de Supervivencia', '$2.99')">Comprar Pack</button>
+                </div>
+            </div>
+
+            <!-- COFRE DEL MERCADO -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="pack-icon">🏛️</div>
+                    <div class="card-title">Cofre del Mercado</div>
+                    <div class="card-price">$4.99 <span>/ pago único</span></div>
+                    
+                    <div class="sc-highlight">
+                        💰 <strong>100,000 SC</strong> en efectivo directo
+                    </div>
+
+                    <ul class="feature-list">
+                        <li>2x 🪬 Elixir Curativo</li>
+                        <li>4x 🍰 Pastel</li>
+                        <li>4x 🧴 Agua Pura</li>
+                        <li><strong>Uso:</strong> Inyección masiva de capital para el mercado de waifus + inmunidad médica prolongada.</li>
+                    </ul>
+
+                    <button class="btn btn-outline" onclick="buy('Cofre del Mercado', '$4.99')">Comprar Pack</button>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>Mio Bot © 2026 — Sistema de Rol, Supervivencia & Economía Global para WhatsApp.</p>
+            <p style="margin-top: 5px; font-size: 0.8rem;">Las entregas de recursos y asignación de rangos se procesan de forma inmediata tras confirmar tu pago.</p>
+        </footer>
+    </div>
+
+    <script>
+        function buy(productName, price) {
+            // Reemplazar con el número del desarrollador u Owner
+            const ownerNumber = "12368700359"; 
+            const message = `Hola, quiero comprar el paquete "${productName}" por ${price} en Mio Bot. Por favor indícame los métodos de pago.`;
+            const whatsappUrl = `https://wa.me/${ownerNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
